@@ -6,8 +6,10 @@ import { useRouter } from 'next/router';
 import { IPlanet } from '../interfaces/inteface-planets';
 import { ServicePlanet } from '../services/service-planet';
 import { formatDate } from '../utils/format-date';
+import { useWishlist } from '../provider/provider-store';
 
 const Detail: NextPage = () => {
+  const { wishlist, addWishlist } = useWishlist();
   const router: { query: { url?: string } } = useRouter();
 
   const [data, setData] = useState<IPlanet>({
@@ -94,7 +96,10 @@ const Detail: NextPage = () => {
             <p>{data.created != '' ? formatDate(data.created) : ''}</p>
           </div>
         </div>
-        <button className="mt-4 bg-green-600 text-sm py-2 px-4 rounded-sm text-white">
+        <button
+          className="mt-4 bg-green-600 text-sm py-2 px-4 rounded-sm text-white"
+          onClick={() => addWishlist(data)}
+        >
           Add To Wishlist
         </button>
       </main>
