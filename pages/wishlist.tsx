@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { IPlanet } from '../interfaces/inteface-planets';
 import { useWishlist } from '../provider/provider-store';
 import CardPlanet from '../components/card-planet/card-planet';
+import Navbar from '../components/navbar/navbar';
 
 const Wishlist: NextPage = () => {
   const { wishlist } = useWishlist();
@@ -16,19 +17,7 @@ const Wishlist: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <nav className="bg-gray-800 py-4 mb-4">
-        <div className="max-w-2xl mx-auto flex flex-row space-x-4 text-white">
-          <h1>Swapi.com</h1>
-          <ul className="flex flex-row space-x-4">
-            <li>
-              <Link href={'/'}>Planets</Link>
-            </li>
-            <li>
-              <Link href={'/wishlist'}>Wishlist</Link>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <Navbar />
       <main className="max-w-2xl mx-auto">
         <div className="grid grid-cols-3 gap-3 ">
           {wishlist.map((val: IPlanet, key: number) => {
