@@ -1,7 +1,10 @@
 import axios from 'axios';
 
 export const ServicePlanet = {
-  get: () => {
-    return axios.get('https://swapi.dev/api/planets');
+  get: (page: number) => {
+    return axios.get(`https://swapi.dev/api/planets?page=${page}`);
+  },
+  getDetail: (url: string) => {
+    return axios.get(url);
   }
 };
