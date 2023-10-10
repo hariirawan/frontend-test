@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import CardPlanet from './card-planet';
+import CardPlanet from '../components/card-planet/card-planet';
 
 import '@testing-library/jest-dom';
-import { IPlanet } from '../../interfaces/inteface-planets';
+import { IPlanet } from '../interfaces/inteface-planets';
 
 describe('CardPlanet test', () => {
   const mockPlanet: IPlanet = {
