@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { IPlanet } from '../interfaces/inteface-planets';
 import { useWishlist } from '../provider/provider-store';
+import CardPlanet from '../components/card-planet/card-planet';
 
 const Wishlist: NextPage = () => {
   const { wishlist } = useWishlist();
@@ -31,23 +32,7 @@ const Wishlist: NextPage = () => {
       <main className="max-w-2xl mx-auto">
         <div className="grid grid-cols-3 gap-3 ">
           {wishlist.map((val: IPlanet, key: number) => {
-            return (
-              <Link key={key} href={`/detail?url=${val.url}`}>
-                <div className="border border-gray-800 p-6 rounded-md h-full">
-                  <h3 className="text-xl font-bold">{val.name}</h3>
-                  <strong>Climate</strong>
-                  <p>{val.climate}</p>
-                  <strong>Diameter</strong>
-                  <p>{val.diameter}</p>
-                  <strong>Gravity</strong>
-                  <p>{val.gravity}</p>
-                  <strong>Surface Water</strong>
-                  <p>{val.surface_water}</p>
-                  <strong>Terrain</strong>
-                  <p>{val.terrain}</p>
-                </div>
-              </Link>
-            );
+            return <CardPlanet planet={val} key={key} />;
           })}
         </div>
       </main>
