@@ -1,12 +1,13 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import styles from '../styles/Home.module.css';
 import { useEffect, useState } from 'react';
 import { IPlanet, IRespPlanet } from 'interfaces/inteface-planets';
 import { ServicePlanet } from 'services/service-planet';
 
 const Home: NextPage = () => {
+  const [loading, setLoading] = useState<boolean>(false);
+  const [page, setPage] = useState<number>(1);
   const [data, setData] = useState<IRespPlanet>({
     count: 0,
     next: null,
@@ -14,16 +15,47 @@ const Home: NextPage = () => {
     results: []
   });
 
-  useEffect(() => {
-    async function getPlanets() {
-      try {
-        const response = await ServicePlanet.get();
-        setData(response.data);
-      } catch (error) {}
+  async function getPlanets(page: number) {
+    setLoading(true);
+    try {
+      const response = await ServicePlanet.get(page);
+      let newPlanets = { ...data };
+      newPlanets.next = response.data.next;
+      newPlanets.count = response.data.count;
+      newPlanets.results = [...newPlanets.results, ...response.data.results];
+      setData(newPlanets);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
     }
+  }
 
-    getPlanets();
+  useEffect(() => {
+    getPlanets(page);
   }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (
+        window.innerHeight + document.documentElement.scrollTop >=
+        document.documentElement.offsetHeight - 100
+      ) {
+        let limit = 10;
+        let nextPage = page + 1;
+        console.log(data.count);
+        if (!loading && nextPage < Math.ceil(data.count / limit)) {
+          setPage(nextPage);
+          getPlanets(nextPage);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [loading, page, data]);
 
   return (
     <div>
@@ -45,7 +77,7 @@ const Home: NextPage = () => {
         <div className="grid grid-cols-3 gap-3 ">
           {data.results.map((val: IPlanet, key: number) => {
             return (
-              <Link key={key} href={'/detail'}>
+              <Link key={key} href={`/detail?url=${val.url}`}>
                 <div className="border border-gray-800 p-6 rounded-md h-full">
                   <h3 className="text-xl font-bold">{val.name}</h3>
                   <strong>Climate</strong>
@@ -63,6 +95,7 @@ const Home: NextPage = () => {
             );
           })}
         </div>
+        {loading && <p>Loading...</p>}
       </main>
     </div>
   );

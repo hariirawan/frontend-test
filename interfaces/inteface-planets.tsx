@@ -17,4 +17,5 @@ export interface IPlanet {
   population: string;
   created: string;
   edited: string;
+  url: string;
 }
