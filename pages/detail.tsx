@@ -60,7 +60,7 @@ const Detail: NextPage = () => {
         </div>
       </nav>
       <main className="max-w-2xl mx-auto">
-        <h1 className="text-3xl">{data.name}</h1>
+        <h3 className="text-3xl">{data.name}</h3>
         <div className="grid grid-cols-3 gap-6 mt-6">
           <div>
             <strong>Climate</strong>
