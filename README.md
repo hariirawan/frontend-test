@@ -1,27 +1,24 @@
-# Next.js + Cypress
+# Front End Test
 
-This example shows how to configure Cypress to work with Next.js.
-
-## Deploy your own
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-cypress)
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-cypress&project-name=with-cypress&repository-name=with-cypress)
+# Tech Stack
+``` NextJS
+``` Tailwind CSS
 
 ## How to use
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
-
 ```bash
-npx create-next-app --example with-cypress with-cypress-app
+yarn install && yarn run dev
 ```
 
+## For Test E2E
 ```bash
-yarn create next-app --example with-cypress with-cypress-app
+yarn run e2e
 ```
 
+## For Unit Test
+
 ```bash
-pnpm create next-app --example with-cypress with-cypress-app
+yarn run test
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+Thanks
