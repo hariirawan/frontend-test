@@ -1,10 +1,11 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
-import { IPlanet } from 'interfaces/inteface-planets';
-import { ServicePlanet } from 'services/service-planet';
 import { useRouter } from 'next/router';
-import { formatDate } from 'utils/format-date';
+
+import { IPlanet } from '../interfaces/inteface-planets';
+import { ServicePlanet } from '../services/service-planet';
+import { formatDate } from '../utils/format-date';
 
 const Detail: NextPage = () => {
   const router: { query: { url?: string } } = useRouter();

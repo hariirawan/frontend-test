@@ -2,8 +2,8 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { IPlanet, IRespPlanet } from 'interfaces/inteface-planets';
-import { ServicePlanet } from 'services/service-planet';
+import { IPlanet, IRespPlanet } from '../interfaces/inteface-planets';
+import { ServicePlanet } from '../services/service-planet';
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState<boolean>(false);

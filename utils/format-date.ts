@@ -5,6 +5,5 @@ export const formatDate =(date:string)=> {
     const day = String(originalDate.getUTCDate()).padStart(2, "0");
     
     const formattedDate = `${year}-${month}-${day}`;
-    console.log(formattedDate)
     return formattedDate;
 }
