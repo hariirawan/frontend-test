@@ -50,10 +50,13 @@ const Detail: NextPage = () => {
 
       <nav className="bg-gray-800 py-4 mb-4">
         <div className="max-w-2xl mx-auto flex flex-row space-x-4 text-white items-center">
-          <h1>Swapi.com</h1>
-          <ul className="flex flex-row space-x-4">
-            <li className="text-sm">Planets</li>
-          </ul>
+          <button
+            onClick={() => {
+              window.history.back();
+            }}
+          >
+            Back
+          </button>
         </div>
       </nav>
       <main className="max-w-2xl mx-auto">
